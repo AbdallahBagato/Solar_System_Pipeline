@@ -1,0 +1,19 @@
+name: Solar System
+on: push
+jobs:
+  unit-testing:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone The Repo
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20  # You can change to 18 or 19 if needed
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm test
