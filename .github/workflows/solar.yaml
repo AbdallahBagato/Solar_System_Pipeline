@@ -11,9 +11,17 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18 
-          
+
       - name: Install dependencies
         run: npm install
+    
+      - name: Install npm Test
+        run: | 
+            echo "DB_USERNAME=${{ secrets.MONGO_USERNAME }}" >> $GITHUB_ENV
+            echo "DB_PASSWORD=${{ secrets.MONGO_PASSWORD }}" >> $GITHUB_ENV
+            echo "DB_URI=${{ secrets.MONGO_URI }}" >> $GITHUB_EN
 
       - name: Run tests
         run: npm test
+
+
