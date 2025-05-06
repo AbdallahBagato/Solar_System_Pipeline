@@ -17,9 +17,10 @@ jobs:
     
       - name: Install npm Test
         run: |
-            echo "DB_URI=${{ secrets.MONGO_URI }}" >> $GITHUB_ENV
-            echo "DB_USERNAME=${{ secrets.MONGO_USERNAME }}" >> $GITHUB_ENV
-            echo "DB_PASSWORD=${{ secrets.MONGO_PASSWORD }}" >> $GITHUB_ENV
+            echo "MONGO_URI=${{ secrets.MONGO_URI }}" >> $GITHUB_ENV
+            echo "MONGO_USERNAME=${{ secrets.MONGO_USERNAME }}" >> $GITHUB_ENV
+            echo "MONGO_PASSWORD=${{ secrets.MONGO_PASSWORD }}" >> $GITHUB_ENV
+
       - name: Run tests
         run: npm test
 
