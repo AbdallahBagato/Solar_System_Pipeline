@@ -1,17 +1,15 @@
-FROM node:18-alpine3.17
+FROM node:current-alpine3.20
 
-WORKDIR /usr/app
+ENV MONGO_URI=Mongo-URL
+ENV MONGO_USERNAME=Mongo-user
 
-COPY package*.json /usr/app/
+WORKDIR /app
 
-RUN npm install
+COPY package*.json .
+RUN npm install 
 
 COPY . .
 
-ENV MONGO_URI=uriPlaceholder
-ENV MONGO_USERNAME=usernamePlaceholder
-ENV MONGO_PASSWORD=passwordPlaceholder
-
+ENTRYPOINT ["node"]
+CMD ["app.js"]
 EXPOSE 3000
-
-CMD [ "npm", "start" ]
