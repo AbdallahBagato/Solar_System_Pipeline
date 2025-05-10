@@ -49,7 +49,7 @@ jobs:
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/solar-sys:latest
           
       - name: Test_Image
-        if: steps.Build_Image == 'success'
+        if: steps.build_Image == 'success'
         id: Test_Image
         run: |
             docker run -d --name solar-sys -e MONGO_URI=${{ secrets.MONGO_URI }} \
