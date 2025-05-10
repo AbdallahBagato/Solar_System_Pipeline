@@ -46,7 +46,7 @@ jobs:
         with:
           load: true
           push: false
-          tags: ${{ vars.DOCKERHUB_USERNAME }}/solar-sys:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/solar-sys:latest
           
       - name: Test_Image
         if: steps.Build_Image == 'success'
