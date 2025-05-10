@@ -48,7 +48,7 @@ jobs:
           tags: ${{ vars.DOCKERHUB_USERNAME }}/solar-sys:latest
           
       - name: Test_Image
-        if: steps.Build_Image = 'success'
+        if: steps.Build_Image == 'success'
         id: Test_Image
         run: |
             docker run -d --name solar-sys -e MONGO_URI=${{ secrets.MONGO_URI }} \
@@ -59,7 +59,7 @@ jobs:
 
       - name: Push Image
         uses: docker/build-push-action@v6
-        if: steps.Test_Image = 'success'
+        if: steps.Test_Image == 'success'
         with:
           push: true
           tags: ${{ vars.DOCKERHUB_USERNAME }}/solar-sys:latest
